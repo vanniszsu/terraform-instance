@@ -1,0 +1,43 @@
+{
+  "inbounds": [{
+    "port": 28558,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "938cfa5c-5a2e-4bfb-aee1-567a1115dd4e",
+          "level": 1,
+          "alterId": 64
+        }
+      ]
+    },
+    "streamSettings": {
+      "network": "mkcp",
+      "kcpSetting": {
+        "uplinkCapacity": 5,
+        "downlinkCapacity": 100,
+        "congestion": true,
+        "header": {
+          "type": "none"
+        }
+      }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
+}
